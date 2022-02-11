@@ -1,0 +1,3 @@
+# RandomGamePicker
+
+Today's exercise in overcomplicated but useful for me things is this thing that picks a random game for you. I just selected all the games in my folders and pasted that into visual studio code. That gives you a list of all the names. After that I just manually cleaned up the data a little bit. After that I used a thing in python that uses zlib to compress the "databases" which are just text files. Then I figured out how to load those compressed versions after verifying that they decompress back to the same original file, which they do save for an extra linebreak at the end which is fine. So basically I just made a complicated thing that could have just read normal text files to pick a random item in a list.
