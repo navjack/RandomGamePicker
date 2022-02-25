@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+# pylint: disable=missing-module-docstring
 
-# Random Game Picker.
+# NavJack's Random Game Picker.
 
 import zlib
 import random
