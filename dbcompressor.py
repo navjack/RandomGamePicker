@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+# pylint: disable=missing-module-docstring
 
-# DB Compressor
+# NavJack's Text File Compressor
 
 import zlib
 import json
@@ -30,7 +31,7 @@ FDSDB           = "fds.txt"
 # decompress it using zlib.decompress() and convert the bytes-like
 # object into JSON and then convert that into a python list and
 # display the list.
-with open(GAMEGEARDB, "r") as GG:
+with open(GAMEGEARDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -50,7 +51,7 @@ with open(GAMEGEARDB + ".zlib", "wb") as GG_ZLIB:
 #        GG_ZLIB.write(str(item) + "\n")
 
 # Do the same with the next database file
-with open(GAMEBOYDB, "r") as GG:
+with open(GAMEBOYDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -65,7 +66,7 @@ with open(GAMEBOYDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(NESDB, "r") as GG:
+with open(NESDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -80,7 +81,7 @@ with open(NESDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(PS1DB, "r") as GG:
+with open(PS1DB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -95,7 +96,7 @@ with open(PS1DB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(SNESDB, "r") as GG:
+with open(SNESDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -110,7 +111,7 @@ with open(SNESDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(N64DB, "r") as GG:
+with open(N64DB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -125,7 +126,7 @@ with open(N64DB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(GBADB, "r") as GG:
+with open(GBADB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -140,7 +141,7 @@ with open(GBADB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(GENDB, "r") as GG:
+with open(GENDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -155,7 +156,7 @@ with open(GENDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(SMSDB, "r") as GG:
+with open(SMSDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -170,7 +171,7 @@ with open(SMSDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(VBDB, "r") as GG:
+with open(VBDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -185,7 +186,7 @@ with open(VBDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(SM3DB, "r") as GG:
+with open(SM3DB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -200,7 +201,7 @@ with open(SM3DB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(WSDB, "r") as GG:
+with open(WSDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -215,7 +216,7 @@ with open(WSDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(S32XDB, "r") as GG:
+with open(S32XDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -230,7 +231,7 @@ with open(S32XDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(TG16DB, "r") as GG:
+with open(TG16DB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -245,7 +246,7 @@ with open(TG16DB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(TCDDB, "r") as GG:
+with open(TCDDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -260,7 +261,7 @@ with open(TCDDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(NGPDB, "r") as GG:
+with open(NGPDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
@@ -275,7 +276,7 @@ with open(NGPDB + ".zlib", "wb") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
 
-with open(FDSDB, "r") as GG:
+with open(FDSDB, "r", encoding='utf8') as GG:
     GG_LIST = GG.readlines()
     GG_LIST = [x.strip() for x in GG_LIST]
     GG_JSON = json.dumps(GG_LIST)
