@@ -37,3 +37,9 @@ Cool Croc Twins, The (1992)
 
 Thank you for using the random game picker!
 ```
+
+## Changelog
+
+### LATEST CHANGES
+
+* I figure with the Amiga A500 Mini that people will be downloading large Amiga computer game ROM sets and have no idea where to start in that large folder filled with ADF files so I decided to add my collection of Amiga computer games to a database to use for random selection
