@@ -51,3 +51,26 @@ Thank you for using the random game picker!
 ### LATEST CHANGES
 
 * I figure with the Amiga A500 Mini that people will be downloading large Amiga computer game ROM sets and have no idea where to start in that large folder filled with ADF files so I decided to add my collection of Amiga computer games to a database to use for random selection
+
+## Included systems and their line/game count
+
+```
+Sega 32X                    - 208
+Commodore Amiga             - 3647
+Famicom Disk System         - 343
+Sega Game Gear              - 799
+Nintendo Game Boy & Color   - 3344
+Nintendo Game Boy Advance   - 1112
+Sega Genesis                - 2763
+Nintendo 64                 - 402
+Neo Geo Pocket & Color      - 128
+Nintendo NES                - 3848
+Sony Playstation 1          - 1127
+Sega Mark III               - 243
+Sega Master System          - 391
+Nintendo SNES               - 3841
+TurboGrafx-CD               - 27
+TurboGrafx-16               - 432
+Virtual Boy                 - 31
+WonderSwan                  - 77
+```
