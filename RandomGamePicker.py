@@ -46,6 +46,7 @@ TG16DB          = "tg16.txt"
 TCDDB           = "tcd.txt"
 NGPDB           = "neogeopocket.txt"
 FDSDB           = "fds.txt"
+AMIDB           = "amiga.txt"
 
 # Menu vars.
 MENU1           = " 1. Game Gear"
@@ -65,6 +66,7 @@ MENU14          = "14. TurboGrafx-16"
 MENU15          = "15. TurboGrafx CD"
 MENU16          = "16. NeoGeo Pocket"
 MENU17          = "17. Famicom Disk System"
+MENU18          = "18. Amiga"
 
 # Print the variables for the menu.
 print(MENU1)
@@ -84,6 +86,7 @@ print(MENU14)
 print(MENU15)
 print(MENU16)
 print(MENU17)
+print(MENU18)
 
 # Ask the user to pick a system.
 userpick = input("Pick a system: ")
@@ -316,6 +319,20 @@ elif userpick == "16":
 # If the user picks 17, pick a random line in FDSDB and print it.
 elif userpick == "17":
     with open(FDSDB + ".zlib", "rb") as file:
+        file = zlib.decompress(file.read())
+        file = file.decode("utf-8")
+        file = json.loads(file)
+        random.choice(file)
+        print(YELLOW)
+        print(random.choice(file))
+        print(COLOR)
+        print(CYAN)
+        print("Thank you for using the random game picker!")
+        print(COLOR)
+
+# If the user picks 18, pick a random line in AMIDB and print it.
+elif userpick == "18":
+    with open(AMIDB + ".zlib", "rb") as file:
         file = zlib.decompress(file.read())
         file = file.decode("utf-8")
         file = json.loads(file)
