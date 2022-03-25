@@ -10,7 +10,7 @@ Now, a big reason for the ZLIB'ing of the text file databases is to prevent web 
 * REDUMP
 * NO-INTRO
 
-These are a few useful keywords to know.
+These are a few useful keywords to know. Jdownloader2 is a useful tool also.
 
 ## How do I use this?
 
