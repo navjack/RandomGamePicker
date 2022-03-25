@@ -4,6 +4,14 @@
 
 Today's exercise in overcomplicated but useful for me things is this thing that picks a random game for you. I just selected all the games in my folders and pasted that into visual studio code. That gives you a list of all the names. After that I just manually cleaned up the data a little bit. After that I used a thing in python that uses zlib to compress the "databases" which are just text files. Then I figured out how to load those compressed versions after verifying that they decompress back to the same original file, which they do save for an extra linebreak at the end which is fine. So basically I just made a complicated thing that could have just read normal text files to pick a random item in a list.
 
+Now, a big reason for the ZLIB'ing of the text file databases is to prevent web scraping in the simplest way. I don't feel like having a GitHub repo just filled with names of video games and computer games in plain text. With that mentioned I will not be providing the games listed. I will not be providing information on how to acquire the games either. I will mention that Archive dot ORG is an AMAZING resource.
+
+* The Old School Emulation Center
+* REDUMP
+* NO-INTRO
+
+These are a few useful keywords to know.
+
 ## How do I use this?
 
 [First you need to download this and extract it to a folder!](https://github.com/navjack/RandomGamePicker/releases/tag/AmigaAdded)
