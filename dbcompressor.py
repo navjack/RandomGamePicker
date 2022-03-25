@@ -24,6 +24,7 @@ TG16DB          = "tg16.txt"
 TCDDB           = "tcd.txt"
 NGPDB           = "neogeopocket.txt"
 FDSDB           = "fds.txt"
+AMIDB           = "amiga.txt"
 
 # Open GAMEGEARDB and read it into a list and convert that list into
 # JSON and then convert the JSON into a bytes-like object and then
@@ -288,5 +289,20 @@ with open(FDSDB, "r", encoding='utf8') as GG:
 with open(FDSDB + ".zlib", "wb") as GG_ZLIB:
     GG_ZLIB.write(GG_COMPRESSED)
 #with open(FDSDB + ".list.txt", "wt") as GG_ZLIB:
+#    for item in GG_LIST:
+#        GG_ZLIB.write(str(item) + "\n")
+
+with open(AMIDB, "r", encoding='utf8') as GG:
+    GG_LIST = GG.readlines()
+    GG_LIST = [x.strip() for x in GG_LIST]
+    GG_JSON = json.dumps(GG_LIST)
+    GG_BYTES = bytes(GG_JSON, "utf-8")
+    GG_COMPRESSED = zlib.compress(GG_BYTES, level=9)
+    GG_DECOMPRESSED = zlib.decompress(GG_COMPRESSED)
+    GG_DECOMPRESSED_JSON = GG_DECOMPRESSED.decode("utf-8")
+    GG_LIST = json.loads(GG_DECOMPRESSED_JSON)
+with open(AMIDB + ".zlib", "wb") as GG_ZLIB:
+    GG_ZLIB.write(GG_COMPRESSED)
+#with open(AMIDB + ".list.txt", "wt") as GG_ZLIB:
 #    for item in GG_LIST:
 #        GG_ZLIB.write(str(item) + "\n")
