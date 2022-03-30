@@ -10,20 +10,8 @@ import json
 
 # Color codes.
 RED             = "\033[31m"
-#DARK_RED        = "\033[31;1m"
-#GREEN           = "\033[32m"
-#DARK_GREEN      = "\033[32;1m"
 YELLOW          = "\033[33m"
-#DARK_YELLOW     = "\033[33;1m"
-#BLUE            = "\033[34m"
-#DARK_BLUE       = "\033[34;1m"
-#MAGENTA         = "\033[35m"
-#DARK_MAGENTA    = "\033[35;1m"
 CYAN            = "\033[36m"
-#DARK_CYAN       = "\033[36;1m"
-#WHITE           = "\033[37m"
-#DARK_WHITE      = "\033[37;1m"
-#BLACK           = "\033[30m"
 
 # End color code.
 COLOR           = "\033[0m"
@@ -47,6 +35,7 @@ TCDDB           = "tcd.txt"
 NGPDB           = "neogeopocket.txt"
 FDSDB           = "fds.txt"
 AMIDB           = "amiga.txt"
+MSXDB           = "msx.txt"
 
 # Menu vars.
 MENU1           = " 1. Game Gear"
@@ -67,6 +56,7 @@ MENU15          = "15. TurboGrafx CD"
 MENU16          = "16. NeoGeo Pocket"
 MENU17          = "17. Famicom Disk System"
 MENU18          = "18. Amiga"
+MENU19          = "19. MSX"
 
 # Print the variables for the menu.
 print(MENU1)
@@ -87,6 +77,7 @@ print(MENU15)
 print(MENU16)
 print(MENU17)
 print(MENU18)
+print(MENU19)
 
 # Ask the user to pick a system.
 userpick = input("Pick a system: ")
@@ -333,6 +324,20 @@ elif userpick == "17":
 # If the user picks 18, pick a random line in AMIDB and print it.
 elif userpick == "18":
     with open(AMIDB + ".zlib", "rb") as file:
+        file = zlib.decompress(file.read())
+        file = file.decode("utf-8")
+        file = json.loads(file)
+        random.choice(file)
+        print(YELLOW)
+        print(random.choice(file))
+        print(COLOR)
+        print(CYAN)
+        print("Thank you for using the random game picker!")
+        print(COLOR)
+
+# If the user picks 19, pick a random line in MSXDB and print it.
+elif userpick == "19":
+    with open(MSXDB + ".zlib", "rb") as file:
         file = zlib.decompress(file.read())
         file = file.decode("utf-8")
         file = json.loads(file)
