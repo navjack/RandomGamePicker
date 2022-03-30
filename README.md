@@ -38,6 +38,7 @@ jackmangano@Jacks-Mac-mini games-picker % python3 RandomGamePicker.py
 16. NeoGeo Pocket
 17. Famicom Disk System
 18. Amiga
+19. MSX
 Pick a system: 18
 
 Cool Croc Twins, The (1992)
@@ -73,4 +74,5 @@ TurboGrafx-CD               - 27
 TurboGrafx-16               - 432
 Virtual Boy                 - 31
 WonderSwan                  - 77
+MSX                         - 1329
 ```
