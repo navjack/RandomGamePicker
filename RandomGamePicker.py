@@ -36,6 +36,8 @@ NGPDB           = "neogeopocket.txt"
 FDSDB           = "fds.txt"
 AMIDB           = "amiga.txt"
 MSXDB           = "msx.txt"
+DCDB            = "dreamcast.txt"
+PC98DB          = "pc98.txt (cleanup required)"
 
 # Menu vars.
 MENU1           = " 1. Game Gear"
@@ -57,6 +59,8 @@ MENU16          = "16. NeoGeo Pocket"
 MENU17          = "17. Famicom Disk System"
 MENU18          = "18. Amiga"
 MENU19          = "19. MSX"
+MENU20          = "20. Dreamcast"
+MENU21          = "21. PC-98"
 
 # Print the variables for the menu.
 print(MENU1)
@@ -78,6 +82,8 @@ print(MENU16)
 print(MENU17)
 print(MENU18)
 print(MENU19)
+print(MENU20)
+print(MENU21)
 
 # Ask the user to pick a system.
 userpick = input("Pick a system: ")
@@ -338,6 +344,34 @@ elif userpick == "18":
 # If the user picks 19, pick a random line in MSXDB and print it.
 elif userpick == "19":
     with open(MSXDB + ".zlib", "rb") as file:
+        file = zlib.decompress(file.read())
+        file = file.decode("utf-8")
+        file = json.loads(file)
+        random.choice(file)
+        print(YELLOW)
+        print(random.choice(file))
+        print(COLOR)
+        print(CYAN)
+        print("Thank you for using the random game picker!")
+        print(COLOR)
+
+# If the user picks 20, pick a random line in DCDB and print it.
+elif userpick == "20":
+    with open(DCDB + ".zlib", "rb") as file:
+        file = zlib.decompress(file.read())
+        file = file.decode("utf-8")
+        file = json.loads(file)
+        random.choice(file)
+        print(YELLOW)
+        print(random.choice(file))
+        print(COLOR)
+        print(CYAN)
+        print("Thank you for using the random game picker!")
+        print(COLOR)
+
+# If the user picks 21, pick a random line in PC98DB and print it.
+elif userpick == "21":
+    with open(PC98DB + ".zlib", "rb") as file:
         file = zlib.decompress(file.read())
         file = file.decode("utf-8")
         file = json.loads(file)
