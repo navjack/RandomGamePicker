@@ -39,6 +39,8 @@ jackmangano@Jacks-Mac-mini games-picker % python3 RandomGamePicker.py
 17. Famicom Disk System
 18. Amiga
 19. MSX
+20. Dreamcast
+21. PC-98
 Pick a system: 18
 
 Cool Croc Twins, The (1992)
@@ -51,7 +53,7 @@ Thank you for using the random game picker!
 
 ### LATEST CHANGES
 
-* I figure with the Amiga A500 Mini that people will be downloading large Amiga computer game ROM sets and have no idea where to start in that large folder filled with ADF files so I decided to add my collection of Amiga computer games to a database to use for random selection
+* Added Dreamcast and PC-98. Need to go through the PC-98 one and prune more entries but this should suffice for now.
 
 ## Included systems and their line/game count
 
@@ -75,4 +77,6 @@ TurboGrafx-16               - 432
 Virtual Boy                 - 31
 WonderSwan                  - 77
 MSX                         - 1329
+Dreamcast                   - 265
+PC-98                       - 5849
 ```
