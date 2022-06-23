@@ -37,7 +37,7 @@ FDSDB           = "fds.txt"
 AMIDB           = "amiga.txt"
 MSXDB           = "msx.txt"
 DCDB            = "dreamcast.txt"
-PC98DB          = "pc98.txt (cleanup required)"
+PC98DB          = "pc98.txt"
 
 # Menu vars.
 MENU1           = " 1. Game Gear"
