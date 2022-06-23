@@ -57,7 +57,7 @@ MENU14          = "14. TurboGrafx-16"
 MENU15          = "15. TurboGrafx CD"
 MENU16          = "16. NeoGeo Pocket"
 MENU17          = "17. Famicom Disk System"
-MENU18          = "18. Amiga"
+MENU18          = "18. Commodore Amiga"
 MENU19          = "19. MSX"
 MENU20          = "20. Dreamcast"
 MENU21          = "21. PC-98"
@@ -195,11 +195,13 @@ elif userpick == "7":
 
 # If the user picks 8, pick a random line in GENDB and print it.
 elif userpick == "8":
-    with open(GENDB, mode='r', encoding='utf8') as file:
-        lines = file.read().splitlines()
-        random.choice(lines)
+    with open(GENDB + ".zlib", "rb") as file:
+        file = zlib.decompress(file.read())
+        file = file.decode("utf-8")
+        file = json.loads(file)
+        random.choice(file)
         print(YELLOW)
-        print(random.choice(lines))
+        print(random.choice(file))
         print(COLOR)
         print(CYAN)
         print("Thank you for using the random game picker!")
@@ -207,11 +209,13 @@ elif userpick == "8":
 
 # If the user picks 9, pick a random line in SMSDB and print it.
 elif userpick == "9":
-    with open(SMSDB, mode='r', encoding='utf8') as file:
-        lines = file.read().splitlines()
-        random.choice(lines)
+    with open(SMSDB + ".zlib", "rb") as file:
+        file = zlib.decompress(file.read())
+        file = file.decode("utf-8")
+        file = json.loads(file)
+        random.choice(file)
         print(YELLOW)
-        print(random.choice(lines))
+        print(random.choice(file))
         print(COLOR)
         print(CYAN)
         print("Thank you for using the random game picker!")
@@ -219,11 +223,13 @@ elif userpick == "9":
 
 # If the user picks 10, pick a random line in VBDB and print it.
 elif userpick == "10":
-    with open(VBDB, mode='r', encoding='utf8') as file:
-        lines = file.read().splitlines()
-        random.choice(lines)
+    with open(VBDB + ".zlib", "rb") as file:
+        file = zlib.decompress(file.read())
+        file = file.decode("utf-8")
+        file = json.loads(file)
+        random.choice(file)
         print(YELLOW)
-        print(random.choice(lines))
+        print(random.choice(file))
         print(COLOR)
         print(CYAN)
         print("Thank you for using the random game picker!")
