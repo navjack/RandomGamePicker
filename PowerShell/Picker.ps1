@@ -1,258 +1,241 @@
-function Get-CompressedByteArray {
-
-    [CmdletBinding()]
-    Param (
-        [Parameter(Mandatory,ValueFromPipeline,ValueFromPipelineByPropertyName)]
-        [byte[]] $BYTEARRAY = $(Throw("-byteArray is required"))
-    )
-    Process {
-        Write-Verbose "Get-CompressedByteArray"
-        [System.IO.MemoryStream] $OUTPUT = New-Object System.IO.MemoryStream
-        $ZLibStream = New-Object System.IO.Compression.ZLibStream $OUTPUT, ([IO.Compression.CompressionMode]::Compress)
-        $ZLibStream.Write( $BYTEARRAY, 0, $BYTEARRAY.Length )
-        $ZLibStream.Close()
-        $OUTPUT.Close()
-        $TMP = $OUTPUT.ToArray()
-        Write-Output $TMP
-    }
+function 32X{
+    $32XDB = "32x.txt"
+    $OPENDB = Get-Content -Path $32XDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $32XDB -TotalCount $RNDLINE)[-1]
 }
 
-function Get-DecompressedByteArray {
-
-    [CmdletBinding()]
-    Param (
-        [Parameter(Mandatory,ValueFromPipeline,ValueFromPipelineByPropertyName)]
-        [byte[]] $BYTEARRAY = $(Throw("-byteArray is required"))
-    )
-    Process {
-        Write-Verbose "Get-DecompressedByteArray"
-        $FILEINPUT = New-Object System.IO.MemoryStream( , $BYTEARRAY )
-        $OUTPUT = New-Object System.IO.MemoryStream
-        $ZLibStream = New-Object System.IO.Compression.ZLibStream $FILEINPUT, ([IO.Compression.CompressionMode]::Decompress)
-        $ZLibStream.CopyTo( $OUTPUT )
-        $ZLibStream.Close()
-        $FILEINPUT.Close()
-        [byte[]] $BYTEOUTARRAY = $OUTPUT.ToArray()
-        Write-Output $BYTEOUTARRAY
-    }
+function AMI{
+    $AMIDB = "amiga.txt"
+    $OPENDB = Get-Content -Path $AMIDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $AMIDB -TotalCount $RNDLINE)[-1]
 }
 
-$32XDB = "32x.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $32XDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$32XDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$32XDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function DC{
+    $DCDB = "dreamcast.txt"
+    $OPENDB = Get-Content -Path $DCDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $DCDB -TotalCount $RNDLINE)[-1]
+}
 
-$AMIDB = "amiga.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $AMIDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$AMIDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$AMIDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function FDS{
+    $FDSDB = "fds.txt"
+    $OPENDB = Get-Content -Path $FDSDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $FDSDB -TotalCount $RNDLINE)[-1]
+}
 
-$DCDB = "dreamcast.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $DCDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$DCDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$DCDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function GG{
+    $GGDB = "game gear.txt"
+    $OPENDB = Get-Content -Path $GGDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $GGDB -TotalCount $RNDLINE)[-1]
+}
 
-$FDSDB = "fds.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $FDSDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$FDSDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$FDSDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function GB{
+    $GBDB = "gameboy.txt"
+    $OPENDB = Get-Content -Path $GBDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $GBDB -TotalCount $RNDLINE)[-1]
+}
 
-$GGDB = "game gear.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $GGDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$GGDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$GGDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function GBA{
+    $GBADB = "gba.txt"
+    $OPENDB = Get-Content -Path $GBADB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $GBADB -TotalCount $RNDLINE)[-1]
+}
 
-$GBDB = "gameboy.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $GBDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$GBDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$GBDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function GEN{
+    $GENDB = "gen.txt"
+    $OPENDB = Get-Content -Path $GENDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $GENDB -TotalCount $RNDLINE)[-1]
+}
 
-$GBADB = "gba.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $GBADB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$GBADB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$GBADB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function MSX{
+    $MSXDB = "msx.txt"
+    $OPENDB = Get-Content -Path $MSXDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $MSXDB -TotalCount $RNDLINE)[-1]
+}
 
-$GENDB = "gen.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $GENDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$GENDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$GENDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function N64 {
+    $N64DB = "n64.txt"
+    $OPENDB = Get-Content -Path $N64DB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $N64DB -TotalCount $RNDLINE)[-1]
+}
 
-$MSXDB = "msx.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $MSXDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$MSXDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$MSXDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function NGP{
+    $NGPDB = "neogeopocket.txt"
+    $OPENDB = Get-Content -Path $NGPDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $NGPDB -TotalCount $RNDLINE)[-1]
+}
 
-$N64DB = "n64.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $N64DB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$N64DB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$N64DB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function NES{
+    $NESDB = " nes.txt"
+    $OPENDB = Get-Content -Path $NESDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $NESDB -TotalCount $RNDLINE)[-1]
+}
 
-$NGPDB = "neogeopocket.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $NGPDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$NGPDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$NGPDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function PC98{
+    $PC98DB = "pc98.txt"
+    $OPENDB = Get-Content -Path $PC98DB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $PC98DB -TotalCount $RNDLINE)[-1]
+}
 
-$NESDB = "nes.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $NESDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$NESDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$NESDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function PS1{
+    $PS1DB = "ps1.txt"
+    $OPENDB = Get-Content -Path $PS1DB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $PS1DB -TotalCount $RNDLINE)[-1]
+}
 
-$PC98DB = "pc98.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $PC98DB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$PC98DB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$PC98DB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function SM3{
+    $SM3DB = "sm3.txt"
+    $OPENDB = Get-Content -Path $SM3DB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $SM3DB -TotalCount $RNDLINE)[-1]
+}
 
-$SM3DB = "sm3.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $SM3DB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$SM3DB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$SM3DB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function SMS{
+    $SMSDB = "sms.txt"
+    $OPENDB = Get-Content -Path $SMSDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $SMSDB -TotalCount $RNDLINE)[-1]
+}
 
-$SMSDB = "sms.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $SMSDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$SMSDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$SMSDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function SNES{
+    $SNESDB = "snes.txt"
+    $OPENDB = Get-Content -Path $SNESDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $SNESDB -TotalCount $RNDLINE)[-1]
+}
 
-$SNESDB = "snes.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $SNESDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$SNESDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$SNESDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function TCD{
+    $TCDDB = "tcd.txt"
+    $OPENDB = Get-Content -Path $TCDDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $TCDDB -TotalCount $RNDLINE)[-1]
+}
 
-$TCDDB = "tcd.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $TCDDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$TCDDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$TCDDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function TG16{
+    $TG16DB = "tg16.txt"
+    $OPENDB = Get-Content -Path $TG16DB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $TG16DB -TotalCount $RNDLINE)[-1]
+}
 
-$TG16DB = "tg16.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $TG16DB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$TG16DB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$TG16DB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function VB{
+    $VBDB = "vb.txt"
+    $OPENDB = Get-Content -Path $VBDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $VBDB -TotalCount $RNDLINE)[-1]
+}
 
-$VBDB = "vb.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $VBDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$VBDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$VBDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+function WS{
+    $WSDB = "ws.txt"
+    $OPENDB = Get-Content -Path $WSDB
+    $DBLENGTH = $OPENDB.count
+    $RNDLINE = Get-Random -Maximum $DBLENGTH
+    (Get-Content -Path $WSDB -TotalCount $RNDLINE)[-1]
+}
 
-$WSDB = "ws.txt"
-$DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $WSDB -Delimiter ";"
-[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
-[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
-$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
-[io.file]::WriteAllBytes("$WSDB$DOTZLIB",$WORKDONE)
-# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$WSDB$DOTZLIB")
-# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
-# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+$MENU01 = " 1. Sega 32x"
+$MENU02 = " 2. Commodore Amiga"
+$MENU03 = " 3. Sega Dreamcast"
+$MENU04 = " 4. Nintendo Famicom Disk System"
+$MENU05 = " 5. Sega Game Gear"
+$MENU06 = " 6. Nintendo Game Boy"
+$MENU07 = " 7. Nintendo Game Boy Advance"
+$MENU08 = " 8. Sega Genesis"
+$MENU09 = " 9. MSX"
+$MENU10 = "10. Nintendo N64"
+$MENU11 = "11. Neo Geo Pocket"
+$MENU12 = "12. Nintendo Entertainment System"
+$MENU13 = "13. PC-98"
+$MENU14 = "14. PlayStation 1"
+$MENU15 = "15. Sega Mark 3"
+$MENU16 = "16. Sega Master System"
+$MENU17 = "17. Nintendo Super Entertainment System"
+$MENU18 = "18. Turbo CD"
+$MENU19 = "19. TurboGrafx 16"
+$MENU20 = "20. Nintendo Virtual Boy"
+$MENU21 = "21. Wonderswan"
+
+Write-Host "$MENU01"
+Write-Host "$MENU02"
+Write-Host "$MENU03"
+Write-Host "$MENU04"
+Write-Host "$MENU05"
+Write-Host "$MENU06"
+Write-Host "$MENU07"
+Write-Host "$MENU08"
+Write-Host "$MENU09"
+Write-Host "$MENU10"
+Write-Host "$MENU11"
+Write-Host "$MENU12"
+Write-Host "$MENU13"
+Write-Host "$MENU14"
+Write-Host "$MENU15"
+Write-Host "$MENU16"
+Write-Host "$MENU17"
+Write-Host "$MENU18"
+Write-Host "$MENU19"
+Write-Host "$MENU20"
+Write-Host "$MENU21"
+
+$PICKONE = "Please pick a system:"
+$YOUDIDNT = "You didn't type anything."
+$EXITING = "Exiting..."
+
+Write-Host "$PICKONE"
+$SELECTION = Read-Host "?"
+
+if ($SELECTION -eq "1") {32X}
+elseif ($SELECTION -eq "2") {AMI}
+elseif ($SELECTION -eq "3") {DC}
+elseif ($SELECTION -eq "4") {FDS}
+elseif ($SELECTION -eq "5") {GG}
+elseif ($SELECTION -eq "6") {GB}
+elseif ($SELECTION -eq "7") {GBA}
+elseif ($SELECTION -eq "8") {GEN}
+elseif ($SELECTION -eq "9") {MSX}
+elseif ($SELECTION -eq "10") {N64}
+elseif ($SELECTION -eq "11") {NGP}
+elseif ($SELECTION -eq "12") {NES}
+elseif ($SELECTION -eq "13") {PC98}
+elseif ($SELECTION -eq "14") {PS1}
+elseif ($SELECTION -eq "15") {SM3}
+elseif ($SELECTION -eq "16") {SMS}
+elseif ($SELECTION -eq "17") {SNES}
+elseif ($SELECTION -eq "18") {TCD}
+elseif ($SELECTION -eq "19") {TG16}
+elseif ($SELECTION -eq "20") {VB}
+elseif ($SELECTION -eq "21") {WS}
+else {Write-Host "$YOUDIDNT$EXITING"; Exit}
