@@ -14,7 +14,7 @@ These are a few useful keywords to know. Jdownloader2 is a useful tool also.
 
 ## How do I use this?
 
-[First you need to download this and extract it to a folder!](https://github.com/navjack/RandomGamePicker/releases/tag/FixLongstandingCodeIssue)
+[First you need to download this and extract it to a folder!](https://github.com/navjack/RandomGamePicker/releases/tag/SemiFinalPowerShell)
 
 If you have Python 3 installed then you can just run this in your terminal or command line of choice.
 
