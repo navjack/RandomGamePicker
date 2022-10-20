@@ -39,7 +39,7 @@ function Get-DecompressedByteArray {
 
 $32XDB = "32x.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $32XDB -Delimiter ";"
+$TEXT = Get-Content -Path $32XDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -50,7 +50,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $AMIDB = "amiga.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $AMIDB -Delimiter ";"
+$TEXT = Get-Content -Path $AMIDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -61,7 +61,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $DCDB = "dreamcast.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $DCDB -Delimiter ";"
+$TEXT = Get-Content -Path $DCDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -72,7 +72,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $FDSDB = "fds.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $FDSDB -Delimiter ";"
+$TEXT = Get-Content -Path $FDSDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -83,7 +83,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $GGDB = "game gear.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $GGDB -Delimiter ";"
+$TEXT = Get-Content -Path $GGDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -94,7 +94,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $GBDB = "gameboy.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $GBDB -Delimiter ";"
+$TEXT = Get-Content -Path $GBDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -105,7 +105,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $GBADB = "gba.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $GBADB -Delimiter ";"
+$TEXT = Get-Content -Path $GBADB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -116,7 +116,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $GENDB = "gen.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $GENDB -Delimiter ";"
+$TEXT = Get-Content -Path $GENDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -127,7 +127,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $MSXDB = "msx.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $MSXDB -Delimiter ";"
+$TEXT = Get-Content -Path $MSXDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -138,7 +138,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $N64DB = "n64.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $N64DB -Delimiter ";"
+$TEXT = Get-Content -Path $N64DB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -149,7 +149,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $NGPDB = "neogeopocket.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $NGPDB -Delimiter ";"
+$TEXT = Get-Content -Path $NGPDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -160,7 +160,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $NESDB = "nes.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $NESDB -Delimiter ";"
+$TEXT = Get-Content -Path $NESDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -171,7 +171,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $PC98DB = "pc98.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $PC98DB -Delimiter ";"
+$TEXT = Get-Content -Path $PC98DB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -182,7 +182,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $SM3DB = "sm3.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $SM3DB -Delimiter ";"
+$TEXT = Get-Content -Path $SM3DB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -193,7 +193,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $SMSDB = "sms.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $SMSDB -Delimiter ";"
+$TEXT = Get-Content -Path $SMSDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -204,7 +204,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $SNESDB = "snes.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $SNESDB -Delimiter ";"
+$TEXT = Get-Content -Path $SNESDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -215,7 +215,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $TCDDB = "tcd.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $TCDDB -Delimiter ";"
+$TEXT = Get-Content -Path $TCDDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -226,7 +226,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $TG16DB = "tg16.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $TG16DB -Delimiter ";"
+$TEXT = Get-Content -Path $TG16DB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -237,7 +237,7 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $VBDB = "vb.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $VBDB -Delimiter ";"
+$TEXT = Get-Content -Path $VBDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
@@ -248,11 +248,22 @@ $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 
 $WSDB = "ws.txt"
 $DOTZLIB = ".zlib"
-$TEXT = Get-Content -Path $WSDB -Delimiter ";"
+$TEXT = Get-Content -Path $WSDB
 [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
 [byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
 $WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
 [io.file]::WriteAllBytes("$WSDB$DOTZLIB",$WORKDONE)
+# $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$WSDB$DOTZLIB")
+# $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+# Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+
+$PS1DB = "ps1.txt"
+$DOTZLIB = ".zlib"
+$TEXT = Get-Content -Path $PS1DB
+[System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+[byte[]] $ENCTEXT = $ENC.GetBytes( $TEXT )
+$WORKDONE = (Get-CompressedByteArray -byteArray $ENCTEXT)
+[io.file]::WriteAllBytes("$PS1DB$DOTZLIB",$WORKDONE)
 # $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$WSDB$DOTZLIB")
 # $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
 # Write-Host "Decoded: " ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )

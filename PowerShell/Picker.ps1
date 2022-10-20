@@ -1,169 +1,292 @@
+function Get-CompressedByteArray {
+
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory,ValueFromPipeline,ValueFromPipelineByPropertyName)]
+        [byte[]] $BYTEARRAY# = $(Throw("-byteArray is required"))
+    )
+    Process {
+        Write-Verbose "Get-CompressedByteArray"
+        [System.IO.MemoryStream] $OUTPUT = New-Object System.IO.MemoryStream
+        $ZLibStream = New-Object System.IO.Compression.ZLibStream $OUTPUT, ([IO.Compression.CompressionMode]::Compress)
+        $ZLibStream.Write( $BYTEARRAY, 0, $BYTEARRAY.Length )
+        $ZLibStream.Close()
+        $OUTPUT.Close()
+        $TMP = $OUTPUT.ToArray()
+        Write-Output $TMP
+    }
+}
+
+function Get-DecompressedByteArray {
+
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory,ValueFromPipeline,ValueFromPipelineByPropertyName)]
+        [byte[]] $BYTEARRAY# = $(Throw("-byteArray is required"))
+    )
+    Process {
+        Write-Verbose "Get-DecompressedByteArray"
+        $FILEINPUT = New-Object System.IO.MemoryStream( , $BYTEARRAY )
+        $OUTPUT = New-Object System.IO.MemoryStream
+        $ZLibStream = New-Object System.IO.Compression.ZLibStream $FILEINPUT, ([IO.Compression.CompressionMode]::Decompress)
+        $ZLibStream.CopyTo( $OUTPUT )
+        $ZLibStream.Close()
+        $FILEINPUT.Close()
+        [byte[]] $BYTEOUTARRAY = $OUTPUT.ToArray()
+        Write-Output $BYTEOUTARRAY
+    }
+}
+
 function 32X{
-    $32XDB = "32x.txt"
-    $OPENDB = Get-Content -Path $32XDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("32x.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$32XDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $32XDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function AMI{
-    $AMIDB = "amiga.txt"
-    $OPENDB = Get-Content -Path $AMIDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("amiga.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$AMIDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $AMIDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function DC{
-    $DCDB = "dreamcast.txt"
-    $OPENDB = Get-Content -Path $DCDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("dreamcast.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$DCDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $DCDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function FDS{
-    $FDSDB = "fds.txt"
-    $OPENDB = Get-Content -Path $FDSDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("fds.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$FDSDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $FDSDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function GG{
-    $GGDB = "game gear.txt"
-    $OPENDB = Get-Content -Path $GGDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("game gear.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$GGDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $GGDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function GB{
-    $GBDB = "gameboy.txt"
-    $OPENDB = Get-Content -Path $GBDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("gameboy.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$GBDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $GBDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function GBA{
-    $GBADB = "gba.txt"
-    $OPENDB = Get-Content -Path $GBADB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("gba.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$GBADB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $GBADB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function GEN{
-    $GENDB = "gen.txt"
-    $OPENDB = Get-Content -Path $GENDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("gen.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$GENDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $GENDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function MSX{
-    $MSXDB = "msx.txt"
-    $OPENDB = Get-Content -Path $MSXDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("msx.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$MSXDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $MSXDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function N64 {
-    $N64DB = "n64.txt"
-    $OPENDB = Get-Content -Path $N64DB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("n64.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$N64DB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $N64DB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function NGP{
-    $NGPDB = "neogeopocket.txt"
-    $OPENDB = Get-Content -Path $NGPDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("neogeopocket.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$NGPDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $NGPDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function NES{
-    $NESDB = " nes.txt"
-    $OPENDB = Get-Content -Path $NESDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("nes.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$NESDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $NESDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function PC98{
-    $PC98DB = "pc98.txt"
-    $OPENDB = Get-Content -Path $PC98DB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("pc98.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$PC98DB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $PC98DB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function PS1{
-    $PS1DB = "ps1.txt"
-    $OPENDB = Get-Content -Path $PS1DB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("ps1.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$PS1DB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $PS1DB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function SM3{
-    $SM3DB = "sm3.txt"
-    $OPENDB = Get-Content -Path $SM3DB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("sm3.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$SM3DB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $SM3DB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function SMS{
-    $SMSDB = "sms.txt"
-    $OPENDB = Get-Content -Path $SMSDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("sms.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$SMSDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $SMSDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function SNES{
-    $SNESDB = "snes.txt"
-    $OPENDB = Get-Content -Path $SNESDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("snes.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$SNESDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $SNESDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function TCD{
-    $TCDDB = "tcd.txt"
-    $OPENDB = Get-Content -Path $TCDDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("tcd.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$TCDDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $TCDDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function TG16{
-    $TG16DB = "tg16.txt"
-    $OPENDB = Get-Content -Path $TG16DB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("tg16.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$TG16DB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $TG16DB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function VB{
-    $VBDB = "vb.txt"
-    $OPENDB = Get-Content -Path $VBDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("vb.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$VBDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $VBDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 function WS{
-    $WSDB = "ws.txt"
-    $OPENDB = Get-Content -Path $WSDB
+    Set-Variable -Name (Join-String -InputObject $MyInvocation.InvocationName,DB) -Value ("ws.txt.zlib")
+    [System.Text.Encoding] $ENC = [System.Text.Encoding]::UTF8
+    $COMPRESSEDBYTEARRAY = [System.IO.File]::ReadAllBytes("$WSDB")
+    $DECOMPRESSEDBYTEARRAY = Get-DecompressedByteArray -byteArray $COMPRESSEDBYTEARRAY
+    $OPENDB = ( $ENC.GetString( $DECOMPRESSEDBYTEARRAY ) | Out-String )
+    $OPENDB = Write-Output -NoEnumerate $OPENDB.Split(";")
     $DBLENGTH = $OPENDB.count
     $RNDLINE = Get-Random -Maximum $DBLENGTH
-    (Get-Content -Path $WSDB -TotalCount $RNDLINE)[-1]
+    $OPENDB[$RNDLINE]
 }
 
 $MENU01 = " 1. Sega 32x"
